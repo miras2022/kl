@@ -1,0 +1,157 @@
+# напиши здесь код для второго экрана приложения
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (QApplication, QWidget,QHBoxLayout, QVBoxLayout,QGroupBox, QRadioButton,QPushButton, QLabel, QListWidget, QLineEdit)
+from final_win import*
+from instr import *
+class TestWin(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.set_appear()
+        self.initUI()
+        self.connects()
+        self.show()
+    def set_appear(self):
+        self.setWindowTitle(txt_title)
+        self.resize(win_width, win_height)
+        self.move(win_x, win_y)
+    def initUI(self):
+        self.h_line = QHBoxLayout()
+        self.r_line = QVBoxLayout()
+        self.l_line = QVBoxLayout()
+        self.name = QLabel(txt_name)
+        self.age = QLabel(txt_age)
+        self.test1 = QLabel(txt_test1)
+        self.test2 = QLabel(txt_test2)
+        self.test3 = QLabel(txt_test3)
+        self.starttest1 = QPushButton(txt_starttest1)
+# напиши здесь код для второго экрана приложения
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (QApplication, QWidget,QHBoxLayout, QVBoxLayout,QGroupBox, QRadioButton,QPushButton, QLabel, QListWidget, QLineEdit)
+from final_win import *
+from instr import *
+class TestWin(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.set_appear()
+        self.initUI()
+        self.connects()
+        self.show()
+    def set_appear(self):
+        self.setWindowTitle(txt_title)
+        self.resize(win_width, win_height)
+        self.move(win_x, win_y)
+    def initUI(self):
+        self.h_line = QHBoxLayout()
+        self.r_line = QVBoxLayout()
+        self.l_line = QVBoxLayout()
+        self.name = QLabel(txt_name)
+        self.age = QLabel(txt_age)
+        self.test1 = QLabel(txt_test1)
+        self.test2 = QLabel(txt_test2)
+        self.test3 = QLabel(txt_test3)
+        self.starttest1 = QPushButton(txt_starttest1)
+        self.starttest2 = QPushButton(txt_starttest2)
+        self.starttest3 = QPushButton(txt_starttest3)
+        self.sendresults = QPushButton(txt_sendresults)
+        self.hintname = QLineEdit(txt_hintname)
+        self.hintage = QLineEdit(txt_hintage)
+        self.hinttest1 = QLineEdit(txt_hinttest1)
+        self.hinttest2 = QLineEdit(txt_hinttest2)
+        self.hinttest3 = QLineEdit(txt_hinttest3)
+        self.r_line.addWidget(self.name, alignment = Qt.AlignLeft)
+        self.r_line.addWidget(self.hintname, alignment = Qt.AlignLeft)
+        self.r_line.addWidget(self.age, alignment = Qt.AlignLeft)
+        self.r_line.addWidget(self.hintage, alignment = Qt.AlignLeft)
+        self.r_line.addWidget(self.test1 ,alignment = Qt.AlignLeft )
+        self.r_line.addWidget(self.starttest1,alignment = Qt.AlignLeft)
+        self.r_line.addWidget(self.hinttest1,alignment = Qt.AlignLeft)
+        self.r_line.addWidget(self.test2, alignment = Qt.AlignLeft)
+        self.r_line.addWidget(self.starttest2,alignment = Qt.AlignLeft)
+        self.r_line.addWidget(self.test3, alignment = Qt.AlignLeft)
+        self.r_line.addWidget(self.starttest3, alignment = Qt.AlignLeft)
+        self.r_line.addWidget(self.hinttest2,alignment = Qt.AlignLeft)
+        self.r_line.addWidget(self.hinttest3,alignment = Qt.AlignLeft)
+        self.r_line.addWidget(self.sendresults,alignment = Qt.AlignCenter)
+       
+        self.h_line.addLayout(self.l_line)
+        self.h_line.addLayout(self.r_line)
+        self.setLayout(self.h_line)
+
+    def connects(self):
+        self.sendresults.clicked.connect(self.next_click)
+    def next_click(self):
+        self.hide()
+        self.fw = FinalWin()
+
+
+app = QApplication([])
+my_win = TestWin()
+app.exec_()
+
+
+
+
+
+
+
+
+
+# напиши здесь код третьего экрана приложения
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (QApplication, QWidget,QHBoxLayout, QVBoxLayout,QGroupBox, QRadioButton,QPushButton, QLabel, QListWidget, QLineEdit)
+from instr import *
+class FinalWin(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.set_appear()
+        self.initUI()
+        self.connects()
+        self.show()
+    def set_appear(self):
+        self.setWindowTitle(txt_finalwin)
+        self.resize(win_width, win_height)
+        self.move(win_x, win_y)
+    def initUI(self):
+        self.m_line = QVBoxLayout()
+        self.index = QLabel(txt_index )
+        self.workheart = QLabel(txt_workheart)
+        self.m_line.addWidget(self.index)
+        self.m_line.addWidget(self.workheart)
+        self.setLayout(self.m_line)
+
+
+
+
+
+
+win_x, win_y = 200, 100
+win_width, win_height = 1000, 600
+
+txt_hello = ''
+txt_next = ''
+txt_instruction = '' 
+txt_title = 'Здоровье'
+txt_name = 'Введите Ф.И.О.:'
+txt_hintname = "Ф.И.О"
+txt_hintage = "0"
+txt_test1 = 'Лягте на спину и замерьте пульс за 15 секунд. Нажмите кнопку "Начать первый тест", чтобы запустить таймер.Результат запишите в соответствующее поле.'
+txt_test2 = 'Выполните 30 приседаний за 45 секунд. Для этого нажмите кнопку “Начать делать приседания",чтобы запустить счетчик приседаний.'
+txt_test3 = 'Лягте на спину и замерьте пульс сначала за первые 15 секунд минуты, затем за последние 15 секунд.Нажмите кнопку "Начать финальный тест", чтобы запустить таймер.Зеленым обозначены секунды, в течение которых необходимо проводить измерения, черным - минуты без замера пульсаций. Результаты запишите в соответствующие поля.'
+txt_sendresults = 'Отправить результаты'
+txt_hinttest1 = '0'
+txt_hinttest2 = '0'
+txt_hinttest3 = '0'
+txt_starttest1 = 'Начать первый тест'
+txt_starttest2 = 'Начать делать приседания'
+txt_starttest3 = 'Начать финальный тест'
+
+txt_age = 'Полных лет:'
+txt_finalwin = 'Результаты'
+txt_index = 'Индекс Руфье: 4.8'
+txt_workheart = 'Работоспособность сердца: выше среднего'
+
+
+
+
+self.l_line.addWidget(self.timer, alignment = Qt.AlignCenter)
+
